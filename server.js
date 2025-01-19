@@ -3,7 +3,10 @@ const express=require('express');
 const app=express();   
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-const db=require('./db'); 
+const db=require('./db');  
+require('dotenv').config();
+const Port=process.env.PORT || 3000;
+ 
 // const Person = require('./models/person');
 app.get('/',function(req ,res){
 res.send("welcome to my hotel..How i can help you ?,we have list of menus")
@@ -54,9 +57,8 @@ res.send("welcome to my hotel..How i can help you ?,we have list of menus")
 // }catch(err){
 
 // }
-// })
+// }) 
    
 const personRoutes=require('./routes/personRoutes');
 app.use('/person',personRoutes);
-
-app.listen(3000)
+app.listen(Port) 
